@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 const studentRoute = require("./api/routes/student");
 const facultyRoute = require("./api/routes/faculty");
 
@@ -18,6 +19,9 @@ mongoose
 const app = express();
 app.use(express.json());
 const port = 5000;
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 // Routes
 app.use("/student", studentRoute);
